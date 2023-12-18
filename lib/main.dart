@@ -1,10 +1,12 @@
 
+import 'dart:async';
+
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sign_up/screens/Home.dart';
-import 'package:sign_up/test.dart';
+
 
 import 'login.dart';
 
@@ -30,11 +32,42 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class SplashScreenView extends StatelessWidget {
+String? finalUserName="";
+bool finalisLogged=false;
+class SplashScreenView extends StatefulWidget {
   const SplashScreenView({super.key});
 
   @override
+  State<SplashScreenView> createState() => _SplashScreenViewState();
+}
+
+class _SplashScreenViewState extends State<SplashScreenView> {
+@override
+  void initState()  {
+  GetSharedData().whenComplete(() async {
+    Timer(Duration(seconds: 4), () {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => finalisLogged? HomePage() :MyLogin(),
+          ));
+    });
+  });
+    // TODO: implement initState
+    super.initState();
+  }
+  Future GetSharedData() async{
+    final SharedPreferences pref=await SharedPreferences.getInstance();
+    var isLogged=pref.getBool("isLogged") ;
+    var userN=pref.getString("userN");
+setState(() {
+  finalUserName=userN;
+  finalisLogged=isLogged!;
+});
+  }
+
+  @override
+
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
         centered: true,
@@ -51,7 +84,7 @@ class SplashScreenView extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 32)),
-             // const Text("Welcome Food Recipe Project",style: TextStyle(fontWeight: FontWeight.bold),)
+              // const Text("Welcome Food Recipe Project",style: TextStyle(fontWeight: FontWeight.bold),)
             ],
           ),
         ),
@@ -64,3 +97,5 @@ class SplashScreenView extends StatelessWidget {
         nextScreen: MyLogin());
   }
 }
+
+
