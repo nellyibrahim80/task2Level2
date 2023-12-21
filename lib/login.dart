@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_up/screens/Home.dart';
 import 'package:sign_up/signup.dart';
 
+import 'list.task.day4.dart';
+
 
 class MyLogin extends StatelessWidget {
   var userData = TextEditingController();
@@ -100,6 +102,19 @@ class MyLogin extends StatelessWidget {
                   },
                   child: Text(
                     "Sign Up",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MakeList(),
+                        ));
+                  },
+                  child: Text(
+                    "List Task day 4",
                     style: TextStyle(color: Colors.white),
                   ),
                 )
