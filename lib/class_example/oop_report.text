@@ -1,0 +1,12 @@
+Abstract Classes:
+
+Definition: Abstract classes are classes in Flutter that cannot be instantiated directly. They serve as blueprints for other classes and may contain abstract (unimplemented) methods that must be implemented by their subclasses. Abstract classes are often used to define common behavior for a group of related classes.
+Static Keyword:
+
+Definition: In Flutter, the static keyword is used to declare members (variables or methods) that belong to a class rather than an instance of the class. Static members are shared among all instances of the class and can be accessed without creating an instance. Static methods are commonly used for utility functions or factory methods.
+Encapsulation:
+
+Definition: Encapsulation is a fundamental concept in Flutter OOP that involves bundling the data (attributes) and methods (functions) that operate on the data within a single unit, known as a class. Access to the internal state of the object is controlled, typically through public and private access modifiers. Encapsulation helps in data hiding and promoting modularity.
+Polymorphism:
+
+Definition: Polymorphism in Flutter refers to the ability of objects to take on multiple forms. There are two types of polymorphism: compile-time (method overloading, operator overloading) and runtime (method overriding). In Flutter, method overriding is commonly used, where a subclass provides a specific implementation of a method that is already defined in its superclass.
